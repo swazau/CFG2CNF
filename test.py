@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Test script for CFG2CNF
+# Test script for CFG2CNF with step-by-step conversion demonstration
 
 import subprocess
 import sys
@@ -8,7 +8,7 @@ def test_grammar(grammar, description):
     print(f"\n===== Testing {description} =====")
     print("Input Grammar:")
     print("\n".join(grammar))
-    print("\nOutput:")
+    print("\nRunning conversion...")
     
     # Run the main.py script with the grammar as input
     process = subprocess.run(
@@ -29,27 +29,27 @@ def test_grammar(grammar, description):
     return True
 
 def main():
-    # Test cases
+    # Test cases that demonstrate all the steps in the conversion process
     test_cases = [
         (
             ["S -> SaB | aB", "B -> bB | $"],
-            "Basic grammar from README"
+            "Grammar with epsilon production (Step 1)"
         ),
         (
-            ["S -> AB | BC", "A -> a | aA", "B -> b", "C -> cC | c"],
-            "Grammar with multiple rules"
+            ["S -> X | Y", "X -> xX | xZ", "Y -> yY | yZ", "Z -> abcM", "M -> NP", "N -> n | $", "P -> p | $"],
+            "Grammar from the assignment (All steps)"
         ),
         (
-            ["S -> aSb | $"],
-            "Grammar with epsilon"
+            ["S -> A | B | C", "A -> a", "B -> b", "C -> c"],
+            "Grammar with unit productions (Step 2)"
         ),
         (
-            ["S -> A | B", "A -> a", "B -> b"],
-            "Grammar with unit productions"
+            ["S -> aBc", "B -> b"],
+            "Grammar with mixed terminals and non-terminals (Step 3)"
         ),
         (
-            ["S -> aBc", "B -> bB | $"],
-            "Grammar with mixed terminals and non-terminals"
+            ["S -> ABC", "A -> a", "B -> b", "C -> c"],
+            "Grammar with long productions (Step 4)"
         )
     ]
     
