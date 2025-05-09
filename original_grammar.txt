@@ -1,0 +1,8 @@
+S -> X | Y
+X -> xX | xZ
+Y -> yY | yZ
+Z -> abcM
+M -> NP
+N -> n | $
+P -> p | $
+*

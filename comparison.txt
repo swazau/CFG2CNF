@@ -1,0 +1,55 @@
+COMPARISON OF ORIGINAL VS STEP-BY-STEP CONVERSION
+
+ORIGINAL GRAMMAR:
+S -> X | Y
+X -> xX | xZ
+Y -> yY | yZ
+Z -> abcM
+M -> NP
+N -> n | $
+P -> p | $
+
+ORIGINAL VERSION RESULT:
+A -> y
+B -> x
+C -> a
+D -> b
+E -> c
+F -> n
+G -> p
+H -> DEM
+M -> NP | F | G
+N -> F
+P -> G
+S -> AY | AZ | BX | BZ
+X -> BX | BZ
+Y -> AY | AZ
+Z -> CH
+
+STEP-BY-STEP VERSION RESULT:
+A -> y
+B -> x
+C -> a
+D -> b
+E -> c
+F -> n
+G -> p
+H -> DJ
+I -> DE
+J -> EM
+M -> NP | n | p
+N -> n
+P -> p
+S -> AY | AZ | BX | BZ
+X -> BX | BZ
+Y -> AY | AZ
+Z -> CH | CI
+
+DIFFERENCES ANALYSIS:
+1. Both versions create similar terminal mappings (A->y, B->x, etc.)
+2. The step-by-step version has additional non-terminals I and J created during breakdown
+3. The step-by-step version keeps the original terminal rules (M -> n | p, N -> n, P -> p) 
+   rather than substituting with non-terminals (M -> F | G, N -> F, P -> G)
+4. The original version has H -> DEM while step-by-step breaks it down further: H -> DJ, J -> EM
+5. The step-by-step version has Z -> CH | CI, adding the CI rule from breaking down Z -> CDE
+6. Both versions handle the main structure similarly for S, X, and Y productions
